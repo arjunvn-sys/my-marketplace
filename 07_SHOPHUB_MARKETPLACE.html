@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopHub - Multi-Category E-Commerce Marketplace</title>
+    <title>Pyk Verse - Mobile Covers & Fashion Marketplace</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,6 @@
             line-height: 1.6;
         }
 
-        /* ==================== HEADER ==================== */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -54,6 +53,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: 1px;
         }
 
         .search-bar {
@@ -119,10 +119,8 @@
             font-weight: bold;
         }
 
-        /* ==================== BANNER ==================== */
         .banner {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%23667eea" width="1200" height="400"/><circle cx="100" cy="100" r="80" fill="%23764ba2" opacity="0.3"/><circle cx="1100" cy="300" r="100" fill="%23764ba2" opacity="0.2"/></svg>');
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -169,7 +167,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* ==================== CATEGORIES ==================== */
         .categories {
             max-width: 1400px;
             margin: 50px auto;
@@ -185,7 +182,7 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
@@ -221,7 +218,6 @@
             font-size: 0.9em;
         }
 
-        /* ==================== PRODUCTS ==================== */
         .products-section {
             max-width: 1400px;
             margin: 50px auto;
@@ -354,7 +350,6 @@
             transform: scale(1.05);
         }
 
-        /* ==================== FILTERS ==================== */
         .filters {
             background: white;
             padding: 20px;
@@ -385,7 +380,6 @@
             cursor: pointer;
         }
 
-        /* ==================== SHOPPING CART ==================== */
         .cart-modal {
             display: none;
             position: fixed;
@@ -508,7 +502,6 @@
             box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
 
-        /* ==================== AUTH MODAL ==================== */
         .auth-modal {
             display: none;
             position: fixed;
@@ -593,18 +586,6 @@
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
 
-        .auth-toggle {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.9em;
-        }
-
-        .auth-toggle a {
-            color: var(--primary);
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
         .close-auth {
             position: absolute;
             top: 20px;
@@ -613,7 +594,6 @@
             font-size: 1.5em;
         }
 
-        /* ==================== FOOTER ==================== */
         footer {
             background: var(--dark);
             color: white;
@@ -653,7 +633,6 @@
             color: #aaa;
         }
 
-        /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
             .banner h1 {
                 font-size: 2em;
@@ -669,7 +648,7 @@
             }
 
             .category-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
 
             .products-grid {
@@ -679,10 +658,9 @@
     </style>
 </head>
 <body>
-    <!-- ==================== HEADER ==================== -->
     <header>
         <div class="header-container">
-            <div class="logo">🛍️ ShopHub</div>
+            <div class="logo">✨ Pyk Verse</div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Search products...">
                 <button onclick="searchProducts()">Search</button>
@@ -697,22 +675,18 @@
         </div>
     </header>
 
-    <!-- ==================== BANNER ==================== -->
     <section class="banner">
-        <h1>Welcome to ShopHub</h1>
-        <p>Discover millions of products from trusted sellers worldwide</p>
-        <button onclick="scrollToSection('categories')">Start Shopping</button>
+        <h1>Welcome to Pyk Verse</h1>
+        <p>Exclusive Mobile Covers & Fashion for Your Unique Style</p>
+        <button onclick="scrollToSection('categories')">Explore Now</button>
     </section>
 
-    <!-- ==================== CATEGORIES ==================== -->
     <section class="categories" id="categories">
         <h2>Shop by Category</h2>
         <div class="category-grid" id="categoryGrid">
-            <!-- Categories will be populated by JavaScript -->
         </div>
     </section>
 
-    <!-- ==================== FEATURED PRODUCTS ==================== -->
     <section class="products-section">
         <div class="section-header">
             <h2>Featured Products</h2>
@@ -736,11 +710,9 @@
             </div>
         </div>
         <div class="products-grid" id="productsGrid">
-            <!-- Products will be populated by JavaScript -->
         </div>
     </section>
 
-    <!-- ==================== CART MODAL ==================== -->
     <div class="cart-modal" id="cartModal">
         <div class="cart-sidebar">
             <div class="cart-header">
@@ -760,7 +732,6 @@
         </div>
     </div>
 
-    <!-- ==================== AUTH MODAL ==================== -->
     <div class="auth-modal" id="authModal">
         <div class="auth-form">
             <span class="close-auth" onclick="toggleAuth()">✕</span>
@@ -780,20 +751,19 @@
                 </div>
             </div>
             <button class="auth-button" onclick="authenticate()">Login</button>
-            <div class="auth-toggle">
-                Don't have an account? <a onclick="toggleSignup()">Sign up</a>
+            <div class="auth-toggle" style="text-align: center; margin-top: 15px; font-size: 0.9em;">
+                Don't have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Sign up</a>
             </div>
         </div>
     </div>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h4>About ShopHub</h4>
+                <h4>About Pyk Verse</h4>
                 <a href="#">About Us</a>
+                <a href="#">Our Story</a>
                 <a href="#">Careers</a>
-                <a href="#">Press</a>
                 <a href="#">Blog</a>
             </div>
             <div class="footer-column">
@@ -811,42 +781,37 @@
                 <a href="#">Refund Policy</a>
             </div>
             <div class="footer-column">
-                <h4>Sellers</h4>
-                <a href="#">Become a Seller</a>
-                <a href="#">Seller Guide</a>
-                <a href="#">Seller Support</a>
-                <a href="#">Seller Dashboard</a>
+                <h4>Connect</h4>
+                <a href="mailto:pykverse.official@gmail.com">Email: pykverse.official@gmail.com</a>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 ShopHub. All rights reserved. | Built with passion for online shopping</p>
+            <p>&copy; 2024 Pyk Verse. All rights reserved. | Handcrafted with passion for style.</p>
         </div>
     </footer>
 
     <script>
-        // ==================== DATA ==================== 
         const categories = [
-            { id: 1, name: 'Electronics', icon: '📱', description: 'Gadgets & Tech' },
-            { id: 2, name: 'Fashion', icon: '👗', description: 'Clothes & Accessories' },
-            { id: 3, name: 'Home & Living', icon: '🏠', description: 'Furniture & Decor' },
-            { id: 4, name: 'Books', icon: '📚', description: 'Knowledge & Stories' },
-            { id: 5, name: 'Sports', icon: '⚽', description: 'Athletic Gear' },
-            { id: 6, name: 'Beauty', icon: '💄', description: 'Cosmetics & Care' }
+            { id: 1, name: 'Mobile Covers', icon: '📱', description: 'Premium Protection' },
+            { id: 2, name: 'Fashion & Accessories', icon: '👕', description: 'Trendy Styles' }
         ];
 
         const products = [
-            { id: 1, name: 'Wireless Headphones', category: 'Electronics', price: 79.99, rating: 4.5, icon: '🎧' },
-            { id: 2, name: 'Smart Watch', category: 'Electronics', price: 199.99, rating: 4.8, icon: '⌚' },
-            { id: 3, name: 'Casual T-Shirt', category: 'Fashion', price: 29.99, rating: 4.3, icon: '👕' },
-            { id: 4, name: 'Designer Jeans', category: 'Fashion', price: 89.99, rating: 4.6, icon: '👖' },
-            { id: 5, name: 'Coffee Maker', category: 'Home & Living', price: 49.99, rating: 4.4, icon: '☕' },
-            { id: 6, name: 'Wall Art', category: 'Home & Living', price: 39.99, rating: 4.5, icon: '🖼️' },
-            { id: 7, name: 'Programming Book', category: 'Books', price: 34.99, rating: 4.7, icon: '📖' },
-            { id: 8, name: 'Yoga Mat', category: 'Sports', price: 24.99, rating: 4.6, icon: '🧘' },
-            { id: 9, name: 'Organic Face Cream', category: 'Beauty', price: 44.99, rating: 4.5, icon: '🧴' },
-            { id: 10, name: 'Laptop Stand', category: 'Electronics', price: 59.99, rating: 4.4, icon: '💻' },
-            { id: 11, name: 'Running Shoes', category: 'Sports', price: 129.99, rating: 4.7, icon: '👟' },
-            { id: 12, name: 'Skincare Set', category: 'Beauty', price: 99.99, rating: 4.8, icon: '💆' }
+            { id: 1, name: 'iPhone 15 Pro Black Case', category: 'Mobile Covers', price: 24.99, rating: 4.8, icon: '📱' },
+            { id: 2, name: 'Samsung Galaxy S24 Clear Case', category: 'Mobile Covers', price: 19.99, rating: 4.6, icon: '📱' },
+            { id: 3, name: 'iPhone 14 Matte Finish Case', category: 'Mobile Covers', price: 22.99, rating: 4.7, icon: '📱' },
+            { id: 4, name: 'OnePlus 12 Premium Case', category: 'Mobile Covers', price: 18.99, rating: 4.5, icon: '📱' },
+            { id: 5, name: 'Google Pixel 8 Pro Case', category: 'Mobile Covers', price: 21.99, rating: 4.6, icon: '📱' },
+            { id: 6, name: 'iPad Pro 12.9" Protective Case', category: 'Mobile Covers', price: 34.99, rating: 4.8, icon: '📱' },
+            { id: 7, name: 'Classic Black Unisex T-Shirt', category: 'Fashion & Accessories', price: 14.99, rating: 4.5, icon: '👕' },
+            { id: 8, name: 'Premium Canvas Sneakers', category: 'Fashion & Accessories', price: 49.99, rating: 4.7, icon: '👟' },
+            { id: 9, name: 'Minimalist Baseball Cap', category: 'Fashion & Accessories', price: 16.99, rating: 4.4, icon: '🧢' },
+            { id: 10, name: 'Casual Denim Jacket Unisex', category: 'Fashion & Accessories', price: 59.99, rating: 4.6, icon: '🧥' },
+            { id: 11, name: 'Cotton Crew Neck Sweatshirt', category: 'Fashion & Accessories', price: 34.99, rating: 4.7, icon: '👕' },
+            { id: 12, name: 'Premium Leather Belt', category: 'Fashion & Accessories', price: 29.99, rating: 4.5, icon: '⌚' }
         ];
 
         let cart = [];
@@ -855,7 +820,6 @@
         let isSignupMode = false;
         let filteredProducts = [...products];
 
-        // ==================== DOM ELEMENTS ====================
         function initializeApp() {
             renderCategories();
             renderProducts(products.slice(0, 8));
@@ -902,7 +866,6 @@
             });
         }
 
-        // ==================== FILTERING & SORTING ====================
         function filterByCategory(categoryName) {
             const filtered = products.filter(p => p.category === categoryName);
             renderProducts(filtered);
@@ -944,7 +907,6 @@
             renderProducts(results);
         }
 
-        // ==================== CART ====================
         function addToCart(productId, productName, productPrice) {
             const existingItem = cart.find(item => item.id === productId);
             
@@ -1011,13 +973,12 @@
             }
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`✅ Order placed successfully!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at ShopHub!`);
+            alert(`✅ Order placed successfully!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at Pyk Verse!`);
             cart = [];
             updateCart();
             toggleCart();
         }
 
-        // ==================== AUTHENTICATION ====================
         function toggleAuth() {
             document.getElementById('authModal').classList.toggle('active');
         }
@@ -1033,12 +994,12 @@
                 signupFields.style.display = 'block';
                 authTitle.textContent = 'Sign Up';
                 authButton.textContent = 'Create Account';
-                toggleText.innerHTML = 'Already have an account? <a onclick="toggleSignup()">Login</a>';
+                toggleText.innerHTML = 'Already have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Login</a>';
             } else {
                 signupFields.style.display = 'none';
                 authTitle.textContent = 'Login';
                 authButton.textContent = 'Login';
-                toggleText.innerHTML = 'Don\'t have an account? <a onclick="toggleSignup()">Sign up</a>';
+                toggleText.innerHTML = 'Don\'t have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Sign up</a>';
             }
         }
 
@@ -1063,7 +1024,6 @@
             showNotification(`Welcome, ${currentUser.name}! 👋`);
         }
 
-        // ==================== UTILITIES ====================
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
@@ -1091,7 +1051,6 @@
             setTimeout(() => notification.remove(), 3000);
         }
 
-        // Initialize app on load
         window.addEventListener('load', initializeApp);
     </script>
 </body>
