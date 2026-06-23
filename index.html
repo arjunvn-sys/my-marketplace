@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pyk Verse - Premium Mobile Covers, Fashion & Lifestyle</title>
+    <title>Pyk Verse - Premium Mobile Covers & Fashion</title>
     <style>
         * {
             margin: 0;
@@ -211,12 +211,11 @@
         .category-card h3 {
             color: var(--dark);
             margin-bottom: 10px;
-            font-size: 1.1em;
         }
 
         .category-card p {
             color: #666;
-            font-size: 0.85em;
+            font-size: 0.9em;
         }
 
         .products-section {
@@ -237,21 +236,9 @@
             color: var(--dark);
         }
 
-        .view-all {
-            color: var(--primary);
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .view-all:hover {
-            color: var(--accent);
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 25px;
         }
 
@@ -279,28 +266,12 @@
             color: white;
             position: relative;
             overflow: hidden;
-            object-fit: cover;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .product-image::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0);
-            transition: background 0.3s;
-        }
-
-        .product-card:hover .product-image::after {
-            background: rgba(0,0,0,0.1);
         }
 
         .product-info {
@@ -350,7 +321,6 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
-            font-size: 0.9em;
         }
 
         .add-to-cart-btn:hover {
@@ -374,11 +344,6 @@
             display: flex;
             gap: 10px;
             align-items: center;
-        }
-
-        .filter-group label {
-            font-weight: 600;
-            color: var(--dark);
         }
 
         .filter-group select {
@@ -569,7 +534,6 @@
             border: 2px solid #eee;
             border-radius: 8px;
             font-size: 0.95em;
-            transition: border 0.3s;
         }
 
         .form-group input:focus {
@@ -648,15 +612,6 @@
 
             .search-bar {
                 flex-basis: 100%;
-                order: 3;
-            }
-
-            .cart-sidebar {
-                max-width: 100%;
-            }
-
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .products-grid {
@@ -670,7 +625,7 @@
         <div class="header-container">
             <div class="logo">✨ Pyk Verse</div>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search products...">
+                <input type="text" id="searchInput" placeholder="Search...">
                 <button onclick="searchProducts()">Search</button>
             </div>
             <div class="nav-icons">
@@ -697,7 +652,6 @@
     <section class="products-section">
         <div class="section-header">
             <h2>Featured Products</h2>
-            <a class="view-all" onclick="viewAllProducts()">View All →</a>
         </div>
         <div class="filters">
             <div class="filter-group">
@@ -750,16 +704,7 @@
                 <label>Password</label>
                 <input type="password" id="authPassword" placeholder="••••••••">
             </div>
-            <div id="signupFields" style="display: none;">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="authName" placeholder="Your Name">
-                </div>
-            </div>
             <button class="auth-button" onclick="authenticate()">Login</button>
-            <div class="auth-toggle" style="text-align: center; margin-top: 15px; font-size: 0.9em;">
-                Don't have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Sign up</a>
-            </div>
         </div>
     </div>
 
@@ -769,25 +714,20 @@
                 <h4>About</h4>
                 <a href="#">About Us</a>
                 <a href="#">Our Story</a>
-                <a href="#">Careers</a>
             </div>
             <div class="footer-column">
                 <h4>Support</h4>
                 <a href="#">Contact Us</a>
                 <a href="#">Help Center</a>
-                <a href="#">Track Order</a>
             </div>
             <div class="footer-column">
                 <h4>Policies</h4>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms & Conditions</a>
-                <a href="#">Shipping</a>
             </div>
             <div class="footer-column">
                 <h4>Connect</h4>
-                <a href="mailto:pykverse01@gmail.com">Email: pykverse01@gmail.com</a>
-                <a href="#">Instagram</a>
-                <a href="#">Facebook</a>
+                <a href="mailto:pykverse01@gmail.com">pykverse01@gmail.com</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -807,35 +747,68 @@
         ];
 
         const products = [
-            { id: 1, name: 'iPhone 15 Pro Black Case', category: 'Mobile Covers', price: 24.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 2, name: 'Samsung Galaxy S24 Case', category: 'Mobile Covers', price: 19.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 3, name: 'iPhone 14 Matte Case', category: 'Mobile Covers', price: 22.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 4, name: 'OnePlus 12 Case', category: 'Mobile Covers', price: 18.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 5, name: 'Black Premium Hoodie', category: 'Hoodies', price: 49.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
-            { id: 6, name: 'Grey Unisex Hoodie', category: 'Hoodies', price: 44.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
-            { id: 7, name: 'Navy Blue Hoodie', category: 'Hoodies', price: 47.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1516992654410-71b4e4ff0e4f?w=400' },
-            { id: 8, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400' },
-            { id: 9, name: 'Black Casual T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1574180045827-cfdf5409fb0f?w=400' },
-            { id: 10, name: 'Grey Melange T-Shirt', category: 'T-Shirts', price: 13.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400' },
-            { id: 11, name: 'Modern Abstract Canvas', category: 'Wall Art', price: 59.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=400' },
-            { id: 12, name: 'Minimalist Line Art', category: 'Wall Art', price: 44.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400' },
-            { id: 13, name: 'Nature Landscape Print', category: 'Wall Art', price: 54.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1573662053844-1a531f38e039?w=400' },
-            { id: 14, name: 'Premium Canvas Sneakers', category: 'Shoes', price: 49.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
-            { id: 15, name: 'Running Sports Shoes', category: 'Shoes', price: 69.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
-            { id: 16, name: 'Casual Slip-On Shoes', category: 'Shoes', price: 39.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400' },
-            { id: 17, name: 'Wireless Over-Ear Headphones', category: 'Headphones', price: 89.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
-            { id: 18, name: 'Studio Pro Headphones', category: 'Headphones', price: 129.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
-            { id: 19, name: 'Portable Bluetooth Headphones', category: 'Headphones', price: 59.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' },
-            { id: 20, name: 'Premium Wireless Earbuds', category: 'Earbuds', price: 79.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
-            { id: 21, name: 'Noise Cancelling Earbuds', category: 'Earbuds', price: 99.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
-            { id: 22, name: 'Sport Wireless Earbuds', category: 'Earbuds', price: 49.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' }
+            // iPhone 15 Pro - Colors
+            { id: 1, name: 'iPhone 15 Pro Black Matte', category: 'Mobile Covers', price: 24.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 2, name: 'iPhone 15 Pro Grey Premium', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 3, name: 'iPhone 15 Pro Transparent Clear', category: 'Mobile Covers', price: 22.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 4, name: 'iPhone 15 Pro Cyan Blue', category: 'Mobile Covers', price: 27.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 5, name: 'iPhone 15 Pro Rose Gold', category: 'Mobile Covers', price: 28.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            
+            // iPhone 14 - Colors
+            { id: 6, name: 'iPhone 14 Black Leather', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 7, name: 'iPhone 14 Space Grey', category: 'Mobile Covers', price: 23.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 8, name: 'iPhone 14 Transparent Slim', category: 'Mobile Covers', price: 19.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 9, name: 'iPhone 14 Cyan Premium', category: 'Mobile Covers', price: 25.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 10, name: 'iPhone 14 Purple Elegant', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            
+            // Samsung Galaxy (Android) - Colors
+            { id: 11, name: 'Samsung S24 Black Carbon', category: 'Mobile Covers', price: 19.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 12, name: 'Samsung S24 Grey Matte', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 13, name: 'Samsung S24 Transparent Clear', category: 'Mobile Covers', price: 17.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 14, name: 'Samsung S24 Cyan Crystal', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 15, name: 'Samsung S24 Red Vibrant', category: 'Mobile Covers', price: 24.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            
+            // OnePlus - Colors
+            { id: 16, name: 'OnePlus 12 Black Pro', category: 'Mobile Covers', price: 18.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 17, name: 'OnePlus 12 Grey Metallic', category: 'Mobile Covers', price: 20.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 18, name: 'OnePlus 12 Transparent Slim', category: 'Mobile Covers', price: 16.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 19, name: 'OnePlus 12 Cyan Speed', category: 'Mobile Covers', price: 22.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 20, name: 'OnePlus 12 Gold Premium', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            
+            // Hoodies
+            { id: 21, name: 'Black Premium Hoodie', category: 'Hoodies', price: 49.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
+            { id: 22, name: 'Grey Unisex Hoodie', category: 'Hoodies', price: 44.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
+            { id: 23, name: 'Navy Blue Hoodie', category: 'Hoodies', price: 47.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1516992654410-71b4e4ff0e4f?w=400' },
+            
+            // T-Shirts
+            { id: 24, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400' },
+            { id: 25, name: 'Black Casual T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1574180045827-cfdf5409fb0f?w=400' },
+            { id: 26, name: 'Grey Melange T-Shirt', category: 'T-Shirts', price: 13.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400' },
+            
+            // Wall Art
+            { id: 27, name: 'Modern Abstract Canvas', category: 'Wall Art', price: 59.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=400' },
+            { id: 28, name: 'Minimalist Line Art', category: 'Wall Art', price: 44.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400' },
+            { id: 29, name: 'Nature Landscape Print', category: 'Wall Art', price: 54.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1573662053844-1a531f38e039?w=400' },
+            
+            // Shoes
+            { id: 30, name: 'Premium Canvas Sneakers', category: 'Shoes', price: 49.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
+            { id: 31, name: 'Running Sports Shoes', category: 'Shoes', price: 69.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
+            { id: 32, name: 'Casual Slip-On Shoes', category: 'Shoes', price: 39.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400' },
+            
+            // Headphones
+            { id: 33, name: 'Wireless Over-Ear Headphones', category: 'Headphones', price: 89.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
+            { id: 34, name: 'Studio Pro Headphones', category: 'Headphones', price: 129.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
+            { id: 35, name: 'Portable Bluetooth Headphones', category: 'Headphones', price: 59.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' },
+            
+            // Earbuds
+            { id: 36, name: 'Premium Wireless Earbuds', category: 'Earbuds', price: 79.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
+            { id: 37, name: 'Noise Cancelling Earbuds', category: 'Earbuds', price: 99.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
+            { id: 38, name: 'Sport Wireless Earbuds', category: 'Earbuds', price: 49.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' }
         ];
 
         let cart = [];
         let isLoggedIn = false;
         let currentUser = null;
-        let isSignupMode = false;
-        let filteredProducts = [...products];
 
         function initializeApp() {
             renderCategories();
@@ -862,7 +835,7 @@
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
                         <div class="product-name">${product.name}</div>
-                        <div class="product-rating">⭐ ${product.rating} (${Math.floor(Math.random() * 300) + 50})</div>
+                        <div class="product-rating">⭐ ${product.rating}</div>
                         <div class="product-price">
                             <span class="price">$${product.price}</span>
                             <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add</button>
@@ -892,24 +865,15 @@
         function filterProducts() {
             const selected = document.getElementById('categoryFilter').value;
             const filtered = selected ? products.filter(p => p.category === selected) : products;
-            filteredProducts = filtered;
             renderProducts(filtered);
         }
 
         function sortProducts() {
             const sortType = document.getElementById('sortFilter').value;
-            let sorted = [...filteredProducts];
-            switch(sortType) {
-                case 'price-low':
-                    sorted.sort((a, b) => a.price - b.price);
-                    break;
-                case 'price-high':
-                    sorted.sort((a, b) => b.price - a.price);
-                    break;
-                case 'rating':
-                    sorted.sort((a, b) => b.rating - a.rating);
-                    break;
-            }
+            let sorted = [...products];
+            if (sortType === 'price-low') sorted.sort((a, b) => a.price - b.price);
+            if (sortType === 'price-high') sorted.sort((a, b) => b.price - a.price);
+            if (sortType === 'rating') sorted.sort((a, b) => b.rating - a.rating);
             renderProducts(sorted);
         }
 
@@ -988,22 +952,6 @@
             document.getElementById('authModal').classList.toggle('active');
         }
 
-        function toggleSignup() {
-            isSignupMode = !isSignupMode;
-            const signupFields = document.getElementById('signupFields');
-            const authTitle = document.getElementById('authTitle');
-            const authButton = document.querySelector('.auth-button');
-            if (isSignupMode) {
-                signupFields.style.display = 'block';
-                authTitle.textContent = 'Sign Up';
-                authButton.textContent = 'Create Account';
-            } else {
-                signupFields.style.display = 'none';
-                authTitle.textContent = 'Login';
-                authButton.textContent = 'Login';
-            }
-        }
-
         function authenticate() {
             const email = document.getElementById('authEmail').value;
             const password = document.getElementById('authPassword').value;
@@ -1019,10 +967,6 @@
 
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function viewAllProducts() {
-            renderProducts(products);
         }
 
         function showNotification(message) {
