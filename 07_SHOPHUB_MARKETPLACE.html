@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pyk Verse - Mobile Covers & Fashion Marketplace</title>
+    <title>Pyk Verse - Premium Mobile Covers, Fashion & Lifestyle</title>
     <style>
         * {
             margin: 0;
@@ -26,7 +26,6 @@
             line-height: 1.6;
         }
 
-        /* ==================== HEADER ==================== */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
@@ -120,7 +119,6 @@
             font-weight: bold;
         }
 
-        /* ==================== BANNER ==================== */
         .banner {
             background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
             color: white;
@@ -169,7 +167,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* ==================== CATEGORIES ==================== */
         .categories {
             max-width: 1400px;
             margin: 50px auto;
@@ -185,7 +182,7 @@
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
         }
 
@@ -214,14 +211,14 @@
         .category-card h3 {
             color: var(--dark);
             margin-bottom: 10px;
+            font-size: 1.1em;
         }
 
         .category-card p {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
-        /* ==================== PRODUCTS ==================== */
         .products-section {
             max-width: 1400px;
             margin: 50px auto;
@@ -254,7 +251,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
             gap: 25px;
         }
 
@@ -279,10 +276,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3em;
             color: white;
             position: relative;
             overflow: hidden;
+            object-fit: cover;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .product-image::after {
@@ -305,24 +308,24 @@
         }
 
         .product-name {
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: bold;
             color: var(--dark);
             margin-bottom: 10px;
-            height: 2.4em;
+            height: 2.2em;
             overflow: hidden;
         }
 
         .product-category {
             color: var(--primary);
-            font-size: 0.85em;
+            font-size: 0.8em;
             margin-bottom: 8px;
         }
 
         .product-rating {
             color: #ffc107;
             margin-bottom: 10px;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         .product-price {
@@ -333,7 +336,7 @@
         }
 
         .price {
-            font-size: 1.5em;
+            font-size: 1.4em;
             font-weight: bold;
             color: var(--accent);
         }
@@ -347,6 +350,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-weight: bold;
+            font-size: 0.9em;
         }
 
         .add-to-cart-btn:hover {
@@ -652,7 +656,7 @@
             }
 
             .category-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .products-grid {
@@ -681,14 +685,13 @@
 
     <section class="banner">
         <h1>Welcome to Pyk Verse</h1>
-        <p>Exclusive Mobile Covers & Fashion for Your Unique Style</p>
+        <p>Premium Mobile Covers, Fashion & Lifestyle Products</p>
         <button onclick="scrollToSection('categories')">Explore Now</button>
     </section>
 
     <section class="categories" id="categories">
         <h2>Shop by Category</h2>
-        <div class="category-grid" id="categoryGrid">
-        </div>
+        <div class="category-grid" id="categoryGrid"></div>
     </section>
 
     <section class="products-section">
@@ -698,23 +701,22 @@
         </div>
         <div class="filters">
             <div class="filter-group">
-                <label>Filter by Category:</label>
+                <label>Filter:</label>
                 <select id="categoryFilter" onchange="filterProducts()">
                     <option value="">All Categories</option>
                 </select>
             </div>
             <div class="filter-group">
-                <label>Sort by:</label>
+                <label>Sort:</label>
                 <select id="sortFilter" onchange="sortProducts()">
                     <option value="featured">Featured</option>
-                    <option value="price-low">Price: Low to High</option>
-                    <option value="price-high">Price: High to Low</option>
+                    <option value="price-low">Price Low-High</option>
+                    <option value="price-high">Price High-Low</option>
                     <option value="rating">Top Rated</option>
                 </select>
             </div>
         </div>
-        <div class="products-grid" id="productsGrid">
-        </div>
+        <div class="products-grid" id="productsGrid"></div>
     </section>
 
     <div class="cart-modal" id="cartModal">
@@ -764,58 +766,69 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h4>About Pyk Verse</h4>
+                <h4>About</h4>
                 <a href="#">About Us</a>
                 <a href="#">Our Story</a>
                 <a href="#">Careers</a>
-                <a href="#">Blog</a>
             </div>
             <div class="footer-column">
                 <h4>Support</h4>
                 <a href="#">Contact Us</a>
                 <a href="#">Help Center</a>
                 <a href="#">Track Order</a>
-                <a href="#">Returns</a>
             </div>
             <div class="footer-column">
                 <h4>Policies</h4>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms & Conditions</a>
-                <a href="#">Shipping Policy</a>
-                <a href="#">Refund Policy</a>
+                <a href="#">Shipping</a>
             </div>
             <div class="footer-column">
                 <h4>Connect</h4>
                 <a href="mailto:pykverse01@gmail.com">Email: pykverse01@gmail.com</a>
                 <a href="#">Instagram</a>
                 <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Pyk Verse. All rights reserved. | Handcrafted with passion for style.</p>
+            <p>&copy; 2024 Pyk Verse. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
         const categories = [
             { id: 1, name: 'Mobile Covers', icon: '📱', description: 'Premium Protection' },
-            { id: 2, name: 'Fashion & Accessories', icon: '👕', description: 'Trendy Styles' }
+            { id: 2, name: 'Hoodies', icon: '🧥', description: 'Cozy & Stylish' },
+            { id: 3, name: 'T-Shirts', icon: '👕', description: 'Casual Comfort' },
+            { id: 4, name: 'Wall Art', icon: '🎨', description: 'Home Decor' },
+            { id: 5, name: 'Shoes', icon: '👟', description: 'Quality Footwear' },
+            { id: 6, name: 'Headphones', icon: '🎧', description: 'Audio Excellence' },
+            { id: 7, name: 'Earbuds', icon: '🎵', description: 'Wireless Sound' }
         ];
 
         const products = [
-            { id: 1, name: 'iPhone 15 Pro Black Case', category: 'Mobile Covers', price: 24.99, rating: 4.8, icon: '📱' },
-            { id: 2, name: 'Samsung Galaxy S24 Clear Case', category: 'Mobile Covers', price: 19.99, rating: 4.6, icon: '📱' },
-            { id: 3, name: 'iPhone 14 Matte Finish Case', category: 'Mobile Covers', price: 22.99, rating: 4.7, icon: '📱' },
-            { id: 4, name: 'OnePlus 12 Premium Case', category: 'Mobile Covers', price: 18.99, rating: 4.5, icon: '📱' },
-            { id: 5, name: 'Google Pixel 8 Pro Case', category: 'Mobile Covers', price: 21.99, rating: 4.6, icon: '📱' },
-            { id: 6, name: 'iPad Pro 12.9" Protective Case', category: 'Mobile Covers', price: 34.99, rating: 4.8, icon: '📱' },
-            { id: 7, name: 'Classic Black Unisex T-Shirt', category: 'Fashion & Accessories', price: 14.99, rating: 4.5, icon: '👕' },
-            { id: 8, name: 'Premium Canvas Sneakers', category: 'Fashion & Accessories', price: 49.99, rating: 4.7, icon: '👟' },
-            { id: 9, name: 'Minimalist Baseball Cap', category: 'Fashion & Accessories', price: 16.99, rating: 4.4, icon: '🧢' },
-            { id: 10, name: 'Casual Denim Jacket Unisex', category: 'Fashion & Accessories', price: 59.99, rating: 4.6, icon: '🧥' },
-            { id: 11, name: 'Cotton Crew Neck Sweatshirt', category: 'Fashion & Accessories', price: 34.99, rating: 4.7, icon: '👕' },
-            { id: 12, name: 'Premium Leather Belt', category: 'Fashion & Accessories', price: 29.99, rating: 4.5, icon: '⌚' }
+            { id: 1, name: 'iPhone 15 Pro Black Case', category: 'Mobile Covers', price: 24.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 2, name: 'Samsung Galaxy S24 Case', category: 'Mobile Covers', price: 19.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 3, name: 'iPhone 14 Matte Case', category: 'Mobile Covers', price: 22.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 4, name: 'OnePlus 12 Case', category: 'Mobile Covers', price: 18.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 5, name: 'Black Premium Hoodie', category: 'Hoodies', price: 49.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
+            { id: 6, name: 'Grey Unisex Hoodie', category: 'Hoodies', price: 44.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
+            { id: 7, name: 'Navy Blue Hoodie', category: 'Hoodies', price: 47.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1516992654410-71b4e4ff0e4f?w=400' },
+            { id: 8, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400' },
+            { id: 9, name: 'Black Casual T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1574180045827-cfdf5409fb0f?w=400' },
+            { id: 10, name: 'Grey Melange T-Shirt', category: 'T-Shirts', price: 13.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400' },
+            { id: 11, name: 'Modern Abstract Canvas', category: 'Wall Art', price: 59.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=400' },
+            { id: 12, name: 'Minimalist Line Art', category: 'Wall Art', price: 44.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400' },
+            { id: 13, name: 'Nature Landscape Print', category: 'Wall Art', price: 54.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1573662053844-1a531f38e039?w=400' },
+            { id: 14, name: 'Premium Canvas Sneakers', category: 'Shoes', price: 49.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
+            { id: 15, name: 'Running Sports Shoes', category: 'Shoes', price: 69.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
+            { id: 16, name: 'Casual Slip-On Shoes', category: 'Shoes', price: 39.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400' },
+            { id: 17, name: 'Wireless Over-Ear Headphones', category: 'Headphones', price: 89.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
+            { id: 18, name: 'Studio Pro Headphones', category: 'Headphones', price: 129.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
+            { id: 19, name: 'Portable Bluetooth Headphones', category: 'Headphones', price: 59.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' },
+            { id: 20, name: 'Premium Wireless Earbuds', category: 'Earbuds', price: 79.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
+            { id: 21, name: 'Noise Cancelling Earbuds', category: 'Earbuds', price: 99.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
+            { id: 22, name: 'Sport Wireless Earbuds', category: 'Earbuds', price: 49.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' }
         ];
 
         let cart = [];
@@ -826,7 +839,7 @@
 
         function initializeApp() {
             renderCategories();
-            renderProducts(products.slice(0, 8));
+            renderProducts(products.slice(0, 12));
             populateFilters();
         }
 
@@ -845,11 +858,11 @@
             const productsGrid = document.getElementById('productsGrid');
             productsGrid.innerHTML = productsToRender.map(product => `
                 <div class="product-card">
-                    <div class="product-image">${product.icon}</div>
+                    <div class="product-image"><img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x250?text=${encodeURIComponent(product.category)}'"></div>
                     <div class="product-info">
                         <div class="product-category">${product.category}</div>
                         <div class="product-name">${product.name}</div>
-                        <div class="product-rating">⭐ ${product.rating} | ${Math.floor(Math.random() * 500) + 50} reviews</div>
+                        <div class="product-rating">⭐ ${product.rating} (${Math.floor(Math.random() * 300) + 50})</div>
                         <div class="product-price">
                             <span class="price">$${product.price}</span>
                             <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add</button>
@@ -886,7 +899,6 @@
         function sortProducts() {
             const sortType = document.getElementById('sortFilter').value;
             let sorted = [...filteredProducts];
-
             switch(sortType) {
                 case 'price-low':
                     sorted.sort((a, b) => a.price - b.price);
@@ -898,28 +910,22 @@
                     sorted.sort((a, b) => b.rating - a.rating);
                     break;
             }
-
             renderProducts(sorted);
         }
 
         function searchProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const results = products.filter(p => 
-                p.name.toLowerCase().includes(query) || 
-                p.category.toLowerCase().includes(query)
-            );
+            const results = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
             renderProducts(results);
         }
 
         function addToCart(productId, productName, productPrice) {
             const existingItem = cart.find(item => item.id === productId);
-            
             if (existingItem) {
                 existingItem.quantity++;
             } else {
                 cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
             }
-            
             updateCart();
             showNotification(`${productName} added to cart!`);
         }
@@ -936,13 +942,11 @@
 
         function renderCartItems() {
             const cartItems = document.getElementById('cartItems');
-            
             if (cart.length === 0) {
                 cartItems.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Your cart is empty</p>';
                 document.getElementById('cartTotal').textContent = '$0.00';
                 return;
             }
-
             cartItems.innerHTML = cart.map(item => `
                 <div class="cart-item">
                     <div class="cart-item-image">📦</div>
@@ -954,7 +958,6 @@
                     <button onclick="removeFromCart(${item.id})" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">✕</button>
                 </div>
             `).join('');
-
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
         }
@@ -970,14 +973,12 @@
                 toggleAuth();
                 return;
             }
-
             if (cart.length === 0) {
                 alert('Your cart is empty');
                 return;
             }
-
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`✅ Order placed successfully!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at Pyk Verse!`);
+            alert(`✅ Order placed!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at Pyk Verse!`);
             cart = [];
             updateCart();
             toggleCart();
@@ -992,38 +993,26 @@
             const signupFields = document.getElementById('signupFields');
             const authTitle = document.getElementById('authTitle');
             const authButton = document.querySelector('.auth-button');
-            const toggleText = document.querySelector('.auth-toggle');
-
             if (isSignupMode) {
                 signupFields.style.display = 'block';
                 authTitle.textContent = 'Sign Up';
                 authButton.textContent = 'Create Account';
-                toggleText.innerHTML = 'Already have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Login</a>';
             } else {
                 signupFields.style.display = 'none';
                 authTitle.textContent = 'Login';
                 authButton.textContent = 'Login';
-                toggleText.innerHTML = 'Don\'t have an account? <a onclick="toggleSignup()" style="color: var(--primary); cursor: pointer; text-decoration: underline;">Sign up</a>';
             }
         }
 
         function authenticate() {
             const email = document.getElementById('authEmail').value;
             const password = document.getElementById('authPassword').value;
-            const name = document.getElementById('authName').value;
-
             if (!email || !password) {
                 alert('Please fill in all fields');
                 return;
             }
-
-            if (isSignupMode && !name) {
-                alert('Please enter your name');
-                return;
-            }
-
             isLoggedIn = true;
-            currentUser = { email, name: isSignupMode ? name : email.split('@')[0] };
+            currentUser = { email, name: email.split('@')[0] };
             toggleAuth();
             showNotification(`Welcome, ${currentUser.name}! 👋`);
         }
@@ -1039,19 +1028,8 @@
         function showNotification(message) {
             const notification = document.createElement('div');
             notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                top: 80px;
-                right: 20px;
-                background: var(--primary);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 8px;
-                z-index: 3000;
-                animation: slideIn 0.3s ease-out;
-            `;
+            notification.style.cssText = `position: fixed; top: 80px; right: 20px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 8px; z-index: 3000;`;
             document.body.appendChild(notification);
-            
             setTimeout(() => notification.remove(), 3000);
         }
 
