@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pyk Verse - Premium Mobile Covers & Fashion</title>
+    <title>Pyk Verse - Premium Mobile Covers & Fashion | Online Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -53,7 +54,6 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            letter-spacing: 1px;
         }
 
         .search-bar {
@@ -120,9 +120,9 @@
         }
 
         .banner {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%), url('https://images.unsplash.com/photo-1557821552-17105176677c?w=1400&h=400&fit=crop') center/cover;
             color: white;
-            padding: 80px 20px;
+            padding: 120px 20px;
             text-align: center;
             animation: slideDown 0.8s ease-out;
         }
@@ -169,21 +169,22 @@
 
         .categories {
             max-width: 1400px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
         .categories h2 {
             text-align: center;
             font-size: 2.2em;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             color: var(--dark);
+            font-weight: 600;
         }
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
         }
 
         .category-card {
@@ -194,33 +195,38 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--primary);
+            border: 2px solid transparent;
         }
 
         .category-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
-            border-top-color: var(--accent);
+            border-color: var(--primary);
         }
 
         .category-icon {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
         }
 
         .category-card h3 {
             color: var(--dark);
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .category-card p {
             color: #666;
-            font-size: 0.9em;
+            font-size: 0.85em;
         }
 
         .products-section {
             max-width: 1400px;
-            margin: 50px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
@@ -234,11 +240,12 @@
         .section-header h2 {
             font-size: 2.2em;
             color: var(--dark);
+            font-weight: 600;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 25px;
         }
 
@@ -256,22 +263,22 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
 
-        .product-image {
+        .product-image-wrapper {
             width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 280px;
+            background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            position: relative;
             overflow: hidden;
+            position: relative;
         }
 
-        .product-image img {
+        .product-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
 
         .product-info {
@@ -280,23 +287,28 @@
 
         .product-name {
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 600;
             color: var(--dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             height: 2.2em;
             overflow: hidden;
+            line-height: 1.1em;
         }
 
         .product-category {
             color: var(--primary);
-            font-size: 0.8em;
-            margin-bottom: 8px;
+            font-size: 0.75em;
+            margin-bottom: 10px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .product-rating {
             color: #ffc107;
-            margin-bottom: 10px;
-            font-size: 0.85em;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            font-weight: 500;
         }
 
         .product-price {
@@ -304,11 +316,12 @@
             justify-content: space-between;
             align-items: center;
             margin-top: 15px;
+            gap: 10px;
         }
 
         .price {
-            font-size: 1.4em;
-            font-weight: bold;
+            font-size: 1.5em;
+            font-weight: 700;
             color: var(--accent);
         }
 
@@ -320,7 +333,8 @@
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 0.9em;
         }
 
         .add-to-cart-btn:hover {
@@ -328,29 +342,44 @@
             transform: scale(1.05);
         }
 
+        .add-to-cart-btn:active {
+            transform: scale(0.98);
+        }
+
         .filters {
             background: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 12px;
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .filter-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             align-items: center;
         }
 
+        .filter-group label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
         .filter-group select {
-            padding: 8px 12px;
+            padding: 10px 15px;
             border: 2px solid var(--primary);
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
+            background: white;
+            font-weight: 500;
+        }
+
+        .filter-group select:hover {
+            border-color: var(--secondary);
         }
 
         .cart-modal {
@@ -373,7 +402,7 @@
         .cart-sidebar {
             background: white;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -391,7 +420,7 @@
         }
 
         .cart-header {
-            padding: 20px;
+            padding: 25px;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
@@ -402,6 +431,11 @@
             cursor: pointer;
             font-size: 1.5em;
             color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .cart-close:hover {
+            color: var(--accent);
         }
 
         .cart-items {
@@ -435,26 +469,27 @@
         }
 
         .cart-item-name {
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 5px;
+            font-size: 0.95em;
         }
 
         .cart-item-price {
             color: var(--accent);
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .cart-footer {
-            padding: 20px;
+            padding: 25px;
             border-top: 2px solid #eee;
         }
 
         .cart-total {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-size: 1.2em;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .checkout-btn {
@@ -466,7 +501,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 700;
             transition: all 0.3s;
         }
 
@@ -499,6 +534,7 @@
             max-width: 400px;
             width: 90%;
             animation: scaleIn 0.3s ease-out;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         @keyframes scaleIn {
@@ -515,15 +551,16 @@
         .auth-form h2 {
             margin-bottom: 25px;
             color: var(--dark);
+            font-weight: 700;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: var(--dark);
             font-weight: 600;
         }
@@ -534,6 +571,7 @@
             border: 2px solid #eee;
             border-radius: 8px;
             font-size: 0.95em;
+            transition: border 0.3s;
         }
 
         .form-group input:focus {
@@ -549,7 +587,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 700;
             transition: all 0.3s;
         }
 
@@ -564,13 +602,18 @@
             right: 20px;
             cursor: pointer;
             font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .close-auth:hover {
+            color: var(--accent);
         }
 
         footer {
             background: var(--dark);
             color: white;
-            padding: 50px 20px 20px;
-            margin-top: 50px;
+            padding: 60px 20px 20px;
+            margin-top: 80px;
         }
 
         .footer-content {
@@ -578,19 +621,20 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 30px;
         }
 
         .footer-column h4 {
             margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .footer-column a {
             display: block;
             color: #aaa;
             text-decoration: none;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             transition: color 0.3s;
         }
 
@@ -610,12 +654,20 @@
                 font-size: 2em;
             }
 
+            .banner {
+                padding: 60px 20px;
+            }
+
             .search-bar {
                 flex-basis: 100%;
             }
 
             .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
         }
     </style>
@@ -625,13 +677,15 @@
         <div class="header-container">
             <div class="logo">✨ Pyk Verse</div>
             <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search...">
+                <input type="text" id="searchInput" placeholder="Search products...">
                 <button onclick="searchProducts()">Search</button>
             </div>
             <div class="nav-icons">
-                <div class="nav-icon" onclick="toggleAuth()">👤</div>
-                <div class="nav-icon" onclick="toggleCart()">
-                    🛒
+                <div class="nav-icon" onclick="toggleAuth()" title="Login">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="nav-icon" onclick="toggleCart()" title="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count" id="cartCount">0</span>
                 </div>
             </div>
@@ -664,8 +718,8 @@
                 <label>Sort:</label>
                 <select id="sortFilter" onchange="sortProducts()">
                     <option value="featured">Featured</option>
-                    <option value="price-low">Price Low-High</option>
-                    <option value="price-high">Price High-Low</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
                     <option value="rating">Top Rated</option>
                 </select>
             </div>
@@ -687,7 +741,7 @@
                     <span>Total:</span>
                     <span id="cartTotal">$0.00</span>
                 </div>
-                <button class="checkout-btn" onclick="checkout()">Checkout</button>
+                <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
             </div>
         </div>
     </div>
@@ -697,287 +751,94 @@
             <span class="close-auth" onclick="toggleAuth()">✕</span>
             <h2 id="authTitle">Login</h2>
             <div class="form-group">
-                <label>Email</label>
+                <label>Email Address</label>
                 <input type="email" id="authEmail" placeholder="your@email.com">
             </div>
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" id="authPassword" placeholder="••••••••">
             </div>
-            <button class="auth-button" onclick="authenticate()">Login</button>
+            <button class="auth-button" onclick="authenticate()">Sign In</button>
         </div>
     </div>
 
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h4>About</h4>
+                <h4>About Pyk Verse</h4>
                 <a href="#">About Us</a>
                 <a href="#">Our Story</a>
+                <a href="#">Careers</a>
             </div>
             <div class="footer-column">
                 <h4>Support</h4>
                 <a href="#">Contact Us</a>
                 <a href="#">Help Center</a>
+                <a href="#">Track Order</a>
             </div>
             <div class="footer-column">
                 <h4>Policies</h4>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms & Conditions</a>
+                <a href="#">Shipping Info</a>
             </div>
             <div class="footer-column">
                 <h4>Connect</h4>
-                <a href="mailto:pykverse01@gmail.com">pykverse01@gmail.com</a>
+                <a href="mailto:pykverse01@gmail.com"><i class="fas fa-envelope"></i> pykverse01@gmail.com</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Pyk Verse. All rights reserved.</p>
+            <p>&copy; 2024 Pyk Verse. All rights reserved. | Premium Online Marketplace</p>
         </div>
     </footer>
 
     <script>
         const categories = [
-            { id: 1, name: 'Mobile Covers', icon: '📱', description: 'Premium Protection' },
-            { id: 2, name: 'Hoodies', icon: '🧥', description: 'Cozy & Stylish' },
-            { id: 3, name: 'T-Shirts', icon: '👕', description: 'Casual Comfort' },
-            { id: 4, name: 'Wall Art', icon: '🎨', description: 'Home Decor' },
-            { id: 5, name: 'Shoes', icon: '👟', description: 'Quality Footwear' },
-            { id: 6, name: 'Headphones', icon: '🎧', description: 'Audio Excellence' },
-            { id: 7, name: 'Earbuds', icon: '🎵', description: 'Wireless Sound' }
+            { id: 1, name: 'Mobile Covers', icon: '<i class="fas fa-mobile-alt"></i>', description: 'Premium Protection' },
+            { id: 2, name: 'Hoodies', icon: '<i class="fas fa-hoodie"></i>', description: 'Cozy & Stylish' },
+            { id: 3, name: 'T-Shirts', icon: '<i class="fas fa-shirt"></i>', description: 'Casual Comfort' },
+            { id: 4, name: 'Wall Art', icon: '<i class="fas fa-image"></i>', description: 'Home Decor' },
+            { id: 5, name: 'Shoes', icon: '<i class="fas fa-shoe-prints"></i>', description: 'Quality Footwear' },
+            { id: 6, name: 'Headphones', icon: '<i class="fas fa-headphones"></i>', description: 'Audio Excellence' },
+            { id: 7, name: 'Earbuds', icon: '<i class="fas fa-earbuds"></i>', description: 'Wireless Sound' }
         ];
 
         const products = [
             // iPhone 15 Pro - Colors
-            { id: 1, name: 'iPhone 15 Pro Black Matte', category: 'Mobile Covers', price: 24.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 2, name: 'iPhone 15 Pro Grey Premium', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 3, name: 'iPhone 15 Pro Transparent Clear', category: 'Mobile Covers', price: 22.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 4, name: 'iPhone 15 Pro Cyan Blue', category: 'Mobile Covers', price: 27.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 5, name: 'iPhone 15 Pro Rose Gold', category: 'Mobile Covers', price: 28.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 1, name: 'iPhone 15 Pro Black Matte', category: 'Mobile Covers', price: 24.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 2, name: 'iPhone 15 Pro Grey Premium', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
+            { id: 3, name: 'iPhone 15 Pro Transparent Clear', category: 'Mobile Covers', price: 22.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop' },
+            { id: 4, name: 'iPhone 15 Pro Cyan Blue', category: 'Mobile Covers', price: 27.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 5, name: 'iPhone 15 Pro Rose Gold', category: 'Mobile Covers', price: 28.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
             
             // iPhone 14 - Colors
-            { id: 6, name: 'iPhone 14 Black Leather', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 7, name: 'iPhone 14 Space Grey', category: 'Mobile Covers', price: 23.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 8, name: 'iPhone 14 Transparent Slim', category: 'Mobile Covers', price: 19.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 9, name: 'iPhone 14 Cyan Premium', category: 'Mobile Covers', price: 25.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 10, name: 'iPhone 14 Purple Elegant', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 6, name: 'iPhone 14 Black Leather', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 7, name: 'iPhone 14 Space Grey', category: 'Mobile Covers', price: 23.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
+            { id: 8, name: 'iPhone 14 Transparent Slim', category: 'Mobile Covers', price: 19.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop' },
+            { id: 9, name: 'iPhone 14 Cyan Premium', category: 'Mobile Covers', price: 25.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 10, name: 'iPhone 14 Purple Elegant', category: 'Mobile Covers', price: 26.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
             
             // Samsung Galaxy (Android) - Colors
-            { id: 11, name: 'Samsung S24 Black Carbon', category: 'Mobile Covers', price: 19.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 12, name: 'Samsung S24 Grey Matte', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 13, name: 'Samsung S24 Transparent Clear', category: 'Mobile Covers', price: 17.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 14, name: 'Samsung S24 Cyan Crystal', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 15, name: 'Samsung S24 Red Vibrant', category: 'Mobile Covers', price: 24.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
+            { id: 11, name: 'Samsung S24 Black Carbon', category: 'Mobile Covers', price: 19.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop' },
+            { id: 12, name: 'Samsung S24 Grey Matte', category: 'Mobile Covers', price: 21.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
+            { id: 13, name: 'Samsung S24 Transparent Clear', category: 'Mobile Covers', price: 17.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 14, name: 'Samsung S24 Cyan Crystal', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop' },
+            { id: 15, name: 'Samsung S24 Red Vibrant', category: 'Mobile Covers', price: 24.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
             
             // OnePlus - Colors
-            { id: 16, name: 'OnePlus 12 Black Pro', category: 'Mobile Covers', price: 18.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 17, name: 'OnePlus 12 Grey Metallic', category: 'Mobile Covers', price: 20.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 18, name: 'OnePlus 12 Transparent Slim', category: 'Mobile Covers', price: 16.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
-            { id: 19, name: 'OnePlus 12 Cyan Speed', category: 'Mobile Covers', price: 22.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=400' },
-            { id: 20, name: 'OnePlus 12 Gold Premium', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=400' },
+            { id: 16, name: 'OnePlus 12 Black Pro', category: 'Mobile Covers', price: 18.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 17, name: 'OnePlus 12 Grey Metallic', category: 'Mobile Covers', price: 20.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
+            { id: 18, name: 'OnePlus 12 Transparent Slim', category: 'Mobile Covers', price: 16.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop' },
+            { id: 19, name: 'OnePlus 12 Cyan Speed', category: 'Mobile Covers', price: 22.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop' },
+            { id: 20, name: 'OnePlus 12 Gold Premium', category: 'Mobile Covers', price: 23.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop' },
             
             // Hoodies
-            { id: 21, name: 'Black Premium Hoodie', category: 'Hoodies', price: 49.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
-            { id: 22, name: 'Grey Unisex Hoodie', category: 'Hoodies', price: 44.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400' },
-            { id: 23, name: 'Navy Blue Hoodie', category: 'Hoodies', price: 47.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1516992654410-71b4e4ff0e4f?w=400' },
+            { id: 21, name: 'Black Premium Hoodie', category: 'Hoodies', price: 49.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop' },
+            { id: 22, name: 'Grey Unisex Hoodie', category: 'Hoodies', price: 44.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop' },
+            { id: 23, name: 'Navy Blue Hoodie', category: 'Hoodies', price: 47.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=500&fit=crop' },
             
             // T-Shirts
-            { id: 24, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400' },
-            { id: 25, name: 'Black Casual T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1574180045827-cfdf5409fb0f?w=400' },
-            { id: 26, name: 'Grey Melange T-Shirt', category: 'T-Shirts', price: 13.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400' },
-            
-            // Wall Art
-            { id: 27, name: 'Modern Abstract Canvas', category: 'Wall Art', price: 59.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=400' },
-            { id: 28, name: 'Minimalist Line Art', category: 'Wall Art', price: 44.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=400' },
-            { id: 29, name: 'Nature Landscape Print', category: 'Wall Art', price: 54.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1573662053844-1a531f38e039?w=400' },
-            
-            // Shoes
-            { id: 30, name: 'Premium Canvas Sneakers', category: 'Shoes', price: 49.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
-            { id: 31, name: 'Running Sports Shoes', category: 'Shoes', price: 69.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400' },
-            { id: 32, name: 'Casual Slip-On Shoes', category: 'Shoes', price: 39.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400' },
-            
-            // Headphones
-            { id: 33, name: 'Wireless Over-Ear Headphones', category: 'Headphones', price: 89.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
-            { id: 34, name: 'Studio Pro Headphones', category: 'Headphones', price: 129.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
-            { id: 35, name: 'Portable Bluetooth Headphones', category: 'Headphones', price: 59.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' },
-            
-            // Earbuds
-            { id: 36, name: 'Premium Wireless Earbuds', category: 'Earbuds', price: 79.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400' },
-            { id: 37, name: 'Noise Cancelling Earbuds', category: 'Earbuds', price: 99.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=400' },
-            { id: 38, name: 'Sport Wireless Earbuds', category: 'Earbuds', price: 49.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=400' }
-        ];
-
-        let cart = [];
-        let isLoggedIn = false;
-        let currentUser = null;
-
-        function initializeApp() {
-            renderCategories();
-            renderProducts(products.slice(0, 12));
-            populateFilters();
-        }
-
-        function renderCategories() {
-            const categoryGrid = document.getElementById('categoryGrid');
-            categoryGrid.innerHTML = categories.map(cat => `
-                <div class="category-card" onclick="filterByCategory('${cat.name}')">
-                    <div class="category-icon">${cat.icon}</div>
-                    <h3>${cat.name}</h3>
-                    <p>${cat.description}</p>
-                </div>
-            `).join('');
-        }
-
-        function renderProducts(productsToRender) {
-            const productsGrid = document.getElementById('productsGrid');
-            productsGrid.innerHTML = productsToRender.map(product => `
-                <div class="product-card">
-                    <div class="product-image"><img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/400x250?text=${encodeURIComponent(product.category)}'"></div>
-                    <div class="product-info">
-                        <div class="product-category">${product.category}</div>
-                        <div class="product-name">${product.name}</div>
-                        <div class="product-rating">⭐ ${product.rating}</div>
-                        <div class="product-price">
-                            <span class="price">$${product.price}</span>
-                            <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function populateFilters() {
-            const categoryFilter = document.getElementById('categoryFilter');
-            const uniqueCategories = [...new Set(products.map(p => p.category))];
-            uniqueCategories.forEach(cat => {
-                const option = document.createElement('option');
-                option.value = cat;
-                option.textContent = cat;
-                categoryFilter.appendChild(option);
-            });
-        }
-
-        function filterByCategory(categoryName) {
-            const filtered = products.filter(p => p.category === categoryName);
-            renderProducts(filtered);
-            document.getElementById('categoryFilter').value = categoryName;
-        }
-
-        function filterProducts() {
-            const selected = document.getElementById('categoryFilter').value;
-            const filtered = selected ? products.filter(p => p.category === selected) : products;
-            renderProducts(filtered);
-        }
-
-        function sortProducts() {
-            const sortType = document.getElementById('sortFilter').value;
-            let sorted = [...products];
-            if (sortType === 'price-low') sorted.sort((a, b) => a.price - b.price);
-            if (sortType === 'price-high') sorted.sort((a, b) => b.price - a.price);
-            if (sortType === 'rating') sorted.sort((a, b) => b.rating - a.rating);
-            renderProducts(sorted);
-        }
-
-        function searchProducts() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const results = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
-            renderProducts(results);
-        }
-
-        function addToCart(productId, productName, productPrice) {
-            const existingItem = cart.find(item => item.id === productId);
-            if (existingItem) {
-                existingItem.quantity++;
-            } else {
-                cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
-            }
-            updateCart();
-            showNotification(`${productName} added to cart!`);
-        }
-
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
-        }
-
-        function updateCart() {
-            document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-            renderCartItems();
-        }
-
-        function renderCartItems() {
-            const cartItems = document.getElementById('cartItems');
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Your cart is empty</p>';
-                document.getElementById('cartTotal').textContent = '$0.00';
-                return;
-            }
-            cartItems.innerHTML = cart.map(item => `
-                <div class="cart-item">
-                    <div class="cart-item-image">📦</div>
-                    <div class="cart-item-details">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">$${item.price}</div>
-                        <div style="font-size: 0.9em; color: #666;">Qty: ${item.quantity}</div>
-                    </div>
-                    <button onclick="removeFromCart(${item.id})" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">✕</button>
-                </div>
-            `).join('');
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
-        }
-
-        function toggleCart() {
-            document.getElementById('cartModal').classList.toggle('active');
-        }
-
-        function checkout() {
-            if (!isLoggedIn) {
-                alert('Please log in to checkout');
-                toggleCart();
-                toggleAuth();
-                return;
-            }
-            if (cart.length === 0) {
-                alert('Your cart is empty');
-                return;
-            }
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`✅ Order placed!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at Pyk Verse!`);
-            cart = [];
-            updateCart();
-            toggleCart();
-        }
-
-        function toggleAuth() {
-            document.getElementById('authModal').classList.toggle('active');
-        }
-
-        function authenticate() {
-            const email = document.getElementById('authEmail').value;
-            const password = document.getElementById('authPassword').value;
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-            isLoggedIn = true;
-            currentUser = { email, name: email.split('@')[0] };
-            toggleAuth();
-            showNotification(`Welcome, ${currentUser.name}! 👋`);
-        }
-
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function showNotification(message) {
-            const notification = document.createElement('div');
-            notification.textContent = message;
-            notification.style.cssText = `position: fixed; top: 80px; right: 20px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 8px; z-index: 3000;`;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
-        }
-
-        window.addEventListener('load', initializeApp);
-    </script>
-</body>
-</html>
+            { id: 24, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop' },
+            { id: 25, name: 'Black Casual T-Shirt', category:
