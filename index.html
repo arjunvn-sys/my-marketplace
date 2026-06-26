@@ -841,4 +841,204 @@
             
             // T-Shirts
             { id: 24, name: 'Classic White T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop' },
-            { id: 25, name: 'Black Casual T-Shirt', category:
+            { id: 25, name: 'Black Casual T-Shirt', category: 'T-Shirts', price: 14.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1574180045827-cfdf5409fb0f?w=500&h=500&fit=crop' },
+            { id: 26, name: 'Grey Melange T-Shirt', category: 'T-Shirts', price: 13.99, rating: 4.4, image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop' },
+            
+            // Wall Art
+            { id: 27, name: 'Modern Abstract Canvas', category: 'Wall Art', price: 59.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1579783902614-e3fb5141b0cb?w=500&h=500&fit=crop' },
+            { id: 28, name: 'Minimalist Line Art', category: 'Wall Art', price: 44.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=500&h=500&fit=crop' },
+            { id: 29, name: 'Nature Landscape Print', category: 'Wall Art', price: 54.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1573662053844-1a531f38e039?w=500&h=500&fit=crop' },
+            
+            // Shoes
+            { id: 30, name: 'Premium Canvas Sneakers', category: 'Shoes', price: 49.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop' },
+            { id: 31, name: 'Running Sports Shoes', category: 'Shoes', price: 69.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop' },
+            { id: 32, name: 'Casual Slip-On Shoes', category: 'Shoes', price: 39.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=500&h=500&fit=crop' },
+            
+            // Headphones
+            { id: 33, name: 'Wireless Over-Ear Headphones', category: 'Headphones', price: 89.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop' },
+            { id: 34, name: 'Studio Pro Headphones', category: 'Headphones', price: 129.99, rating: 4.7, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop' },
+            { id: 35, name: 'Portable Bluetooth Headphones', category: 'Headphones', price: 59.99, rating: 4.6, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=500&h=500&fit=crop' },
+            
+            // Earbuds
+            { id: 36, name: 'Premium Wireless Earbuds', category: 'Earbuds', price: 79.99, rating: 4.8, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop' },
+            { id: 37, name: 'Noise Cancelling Earbuds', category: 'Earbuds', price: 99.99, rating: 4.9, image: 'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop' },
+            { id: 38, name: 'Sport Wireless Earbuds', category: 'Earbuds', price: 49.99, rating: 4.5, image: 'https://images.unsplash.com/photo-1487215078519-e21cc028cb29?w=500&h=500&fit=crop' }
+        ];
+
+        let cart = [];
+        let isLoggedIn = false;
+        let currentUser = null;
+
+        function initializeApp() {
+            renderCategories();
+            renderProducts(products.slice(0, 12));
+            populateFilters();
+        }
+
+        function renderCategories() {
+            const categoryGrid = document.getElementById('categoryGrid');
+            categoryGrid.innerHTML = categories.map(cat => `
+                <div class="category-card" onclick="filterByCategory('${cat.name}')">
+                    <div class="category-icon">${cat.icon}</div>
+                    <h3>${cat.name}</h3>
+                    <p>${cat.description}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderProducts(productsToRender) {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = productsToRender.map(product => `
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="product-rating">⭐ ${product.rating}</div>
+                        <div class="product-price">
+                            <span class="price">$${product.price}</span>
+                            <button class="add-to-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateFilters() {
+            const categoryFilter = document.getElementById('categoryFilter');
+            const uniqueCategories = [...new Set(products.map(p => p.category))];
+            uniqueCategories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat;
+                categoryFilter.appendChild(option);
+            });
+        }
+
+        function filterByCategory(categoryName) {
+            const filtered = products.filter(p => p.category === categoryName);
+            renderProducts(filtered);
+            document.getElementById('categoryFilter').value = categoryName;
+        }
+
+        function filterProducts() {
+            const selected = document.getElementById('categoryFilter').value;
+            const filtered = selected ? products.filter(p => p.category === selected) : products;
+            renderProducts(filtered);
+        }
+
+        function sortProducts() {
+            const sortType = document.getElementById('sortFilter').value;
+            let sorted = [...products];
+            if (sortType === 'price-low') sorted.sort((a, b) => a.price - b.price);
+            if (sortType === 'price-high') sorted.sort((a, b) => b.price - a.price);
+            if (sortType === 'rating') sorted.sort((a, b) => b.rating - a.rating);
+            renderProducts(sorted);
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const results = products.filter(p => p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+            renderProducts(results);
+        }
+
+        function addToCart(productId, productName, productPrice) {
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            }
+            updateCart();
+            showNotification(`${productName} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            renderCartItems();
+        }
+
+        function renderCartItems() {
+            const cartItems = document.getElementById('cartItems');
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #999; padding: 20px;">Your cart is empty</p>';
+                document.getElementById('cartTotal').textContent = '$0.00';
+                return;
+            }
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-image"><i class="fas fa-box"></i></div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">$${item.price}</div>
+                        <div style="font-size: 0.9em; color: #666;">Qty: ${item.quantity}</div>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" style="background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">✕</button>
+                </div>
+            `).join('');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+        }
+
+        function toggleCart() {
+            document.getElementById('cartModal').classList.toggle('active');
+        }
+
+        function checkout() {
+            if (!isLoggedIn) {
+                alert('Please log in to proceed');
+                toggleCart();
+                toggleAuth();
+                return;
+            }
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`✅ Order Confirmed!\n\nTotal: $${total.toFixed(2)}\n\nThank you for shopping at Pyk Verse!`);
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        function toggleAuth() {
+            document.getElementById('authModal').classList.toggle('active');
+        }
+
+        function authenticate() {
+            const email = document.getElementById('authEmail').value;
+            const password = document.getElementById('authPassword').value;
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            isLoggedIn = true;
+            currentUser = { email, name: email.split('@')[0] };
+            toggleAuth();
+            showNotification(`Welcome back, ${currentUser.name}! 👋`);
+        }
+
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `position: fixed; top: 80px; right: 20px; background: var(--primary); color: white; padding: 15px 25px; border-radius: 8px; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);`;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        window.addEventListener('load', initializeApp);
+    </script>
+</body>
+</html>
